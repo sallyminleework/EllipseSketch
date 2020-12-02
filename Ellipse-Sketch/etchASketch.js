@@ -10,17 +10,17 @@ let prevYCoord;
 
 let portName = '/dev/tty.usbmodem1421';//update this with the port you are using
 
-//let a = random (0,255);
-//let b = random (0,255);
-let octo;
+let d = 0;
+let e = 255;
+//let octo;
 
-function preload(){
-	octo = loadImage('octopus.png');
-}
+//function preload(){
+//	octo = loadImage('octopus.png');
+//}
 
 function setup() {
  createCanvas(windowWidth, windowHeight);
-	background(255, 255, 0, 150)
+	background(255,255,255)
 
 	xCoord = width/2;
 	yCoord = height/2;
@@ -79,9 +79,9 @@ function gotData() {
 
 function draw() {
 
-//let a = random (0,255);
-//let b = random (0,255);
-//let c = random (0,255);
+let a = random (0,255);
+let b = random (0,255);
+let c = random (0,255);
 
  prevXCoord = xCoord;
 xCoord = constrain(map(latestData[0],0,1023,0,width),0,width);
@@ -94,22 +94,23 @@ yCoord = constrain(map(latestData[1],0,1023,0,height),0,height);
  strokeWeight(5);
  line(prevXCoord, prevYCoord,xCoord,yCoord);
 */
+
+background(d,e);
+d = map(prevXCoord, 0, windowHeight, 300, 0);
+e = map(prevYCoord, 0, windowWidth, 300, 0);
+/*
 imageMode(CENTER);
-image(octo, prevXCoord, prevYCoord);
-
-//a = map(prevXCoord, 0, windowHeight, 300, 0);
-//b = map(prevYCoord, 0, windowWidth, 300, 0);
-
- /*
+image(octo, prevXCoord, prevYCoord, 50, 50);
+ */
  noStroke();
  fill(a,b,c);
  ellipse(prevXCoord, prevYCoord ,50,50);
  
-
+/*
  stroke(0);
  strokeWeight(5);
  ellipse(prevXCoord, prevYCoord,xCoord,yCoord);
-*/
+ */
 }
 
 
